@@ -4,9 +4,9 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-/* const dist = "./dist/"; */
+   const dist = "./dist/"; 
 
-const dist = '/webprogram/ospanel/domains/localhost/irvas';
+/* const dist = '/webprogram/ospanel/domains/localhost/irvas'; */
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")

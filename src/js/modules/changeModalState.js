@@ -11,6 +11,14 @@ const changeModalState = (state) => {
     checkNumInputs('#width');
     checkNumInputs('#height');
 
+    const toggleButtonState = () => {
+        if (!state['height'] || !state['width']) {
+            document.querySelector('.popup_calc_button').setAttribute('disabled', 'true');
+        } else {
+            document.querySelector('.popup_calc_button').removeAttribute('disabled');
+        }
+    }
+
     function bindActionToElem(event, elem, prop) {
         elem.forEach((item, i) => {
             item.addEventListener(event, () => {
@@ -30,6 +38,7 @@ const changeModalState = (state) => {
                             })
                         } else {
                             state[prop] = item.value;
+                            toggleButtonState();
                         }
                         break;
                     
@@ -38,16 +47,18 @@ const changeModalState = (state) => {
                         break;
                 };
 
-                console.log(state)
+                console.log(state);
             });
         })
     }
+
 
     bindActionToElem('click', windowForm, 'form');
     bindActionToElem('input', windowHeight, 'height');
     bindActionToElem('input', windowWidth, 'width');
     bindActionToElem('change', windowType, 'type');
     bindActionToElem('change', windowProfile, 'profile');
+    toggleButtonState();
 };
 
 
